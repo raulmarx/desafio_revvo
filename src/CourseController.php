@@ -1,4 +1,7 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json");
+
 require_once 'db_connect.php';
 require_once 'Course.php';
 
@@ -25,6 +28,7 @@ function coursesGetRequest($course)
 {
     try {
         $courses = $course->getCourses();
+        
         sendSuccessResponse(['data' => $courses]);
     } catch (Exception $e) {
         sendErrorResponse($e->getMessage());
