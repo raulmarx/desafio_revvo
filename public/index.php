@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <div id="alert-placeholder"></div>
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -61,15 +63,10 @@
 
     <!-- Cursos -->
     <div class="container mt-5">
-        <h2 class="mb-2">Nossos Cursos</h2>
+        <h2 class="mb-2">Meus Cursos</h2>
         <hr class="mb-5">
         <div class="row" id="courses-container"></div>
-        <div class="d-flex justify-content-center">
-            <div class="card create-course-card text-center" data-bs-toggle="modal" data-bs-target="#createCourseModal">
-                <i class="bi bi-plus-circle-fill" style="font-size: 3rem; color: #4e2096;"></i>
-                <h5 class="mt-3">Criar Novo Curso</h5>
-            </div>
-        </div>
+        <div class="d-flex justify-content-center"></div>
     </div>
 
     <!-- Welcome Modal -->
@@ -146,7 +143,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="updateCourseBanner" class="form-label">Atualizar Banner do Curso (1200x400)</label>
+                            <label for="updateCourseBanner" class="form-label">Atualizar Banner do Curso (970x250)</label>
                             <input type="file" class="form-control" id="updateCourseBanner" accept="image/*">
                             <div id="update-banner-error" class="text-danger mt-2"></div>
                             <div class="preview-container mt-3">
@@ -155,7 +152,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="updateCourseCardImage" class="form-label">Atualizar Imagem do Card (250x100)</label>
+                            <label for="updateCourseCardImage" class="form-label">Atualizar Imagem do Card (300x200)</label>
                             <input type="file" class="form-control" id="updateCourseCardImage" accept="image/*">
                             <div id="update-card-error" class="text-danger mt-2"></div>
                             <div class="preview-container mt-3">
@@ -169,6 +166,42 @@
             </div>
         </div>
     </div>
+
+
+    <footer class="bg-white py-4">
+        <div class="bg-white container d-flex flex-wrap justify-content-between align-items-center">
+            <!-- Logo -->
+            <div class="mb-3 mb-md-0">
+                <img src="../assets/image/leo_logo.png" alt="Logo" class="logo-footer">
+            </div>
+
+            <!-- Redes Sociais e Contato -->
+            <div class="d-flex flex-column flex-md-row align-items-md-center gap-4">
+                <!-- Contato -->
+                <div>
+                    <h5 class="mb-1">Contato</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>Email: <a href="mailto:contato@cursoonline.com" class="contact-link">contato@cursoonline.com</a></li>
+                        <li>Telefone: <a href="tel:+551112345678" class="contact-link">(11) 1234-5678</a></li>
+                    </ul>
+                </div>
+                <!-- Redes Sociais -->
+                <div class="text-center">
+                    <h5 class="mb-1">Redes Sociais</h5>
+                    <div>
+                        <a href="#" class="social-link me-3" style="font-size: 1.6rem;"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="social-link me-3" style="font-size: 1.6rem;"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-link me-3" style="font-size: 1.6rem;"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-link" style="font-size: 1.6rem;"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </footer>
+    <small class="mt-3 mb-0">&copy; 2017 Curso Online. Todos os direitos reservados.</small>
 
 
     <!-- Scripts -->

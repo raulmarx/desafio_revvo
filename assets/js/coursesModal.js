@@ -74,18 +74,22 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("title", title);
         formData.append("description", description);
         formData.append("banner", banner);
-        formData.append("cardImage", cardImage);
+        formData.append("image", cardImage);
 
         try {
             const response = await fetch(apiUrl + "coursesPostRequest", {                
-                method: "POST",
-        
-                body: formData,
+                method: "POST",        
+                body: formData
             });
+
+            console.log(response);
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data);
+                if (data.status === "error") {
+                    alert(`Erro ao criar o curso: ${data.message}`);
+                    return;
+                }
                 alert("Curso criado com sucesso!");
                 createCourseForm.reset();
                 bannerPreview.style.display = "none";
@@ -96,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         } catch (error) {
             console.error("Erro na requisição:", error);
-            alert("Erro ao criar o curso. Tente novamente mais tarde.");
+            alert("Erro ao criar o curso");
         }
     });
 });

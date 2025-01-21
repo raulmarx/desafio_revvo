@@ -28,7 +28,7 @@ form.d-flex {
 
   button {
     background-color: $background-color;
-    color: $secondary-color;
+    color: $text-color;
     border: none;
     border-radius: 50%;
     width: 36px;
@@ -40,7 +40,7 @@ form.d-flex {
     margin-right: 2px;
 
     &:hover {
-      background-color: darken($primary-color, 10%);
+      background-color: darken($background-color, 10%);
     }
 
     i {
@@ -206,8 +206,16 @@ form.d-flex {
 
   }
 
+  .dots {
+      background-color: $background-color;
+      border: none;
+
+      &:hover {
+        background-color: color.adjust($background-color, $lightness: -10%);
+      }
+  }
+
   .card-body {
-    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -220,7 +228,6 @@ form.d-flex {
     }
 
     .btn-primary {
-      align-self: center;
       background-color: $primary-color;
       border: none;
 
@@ -359,3 +366,37 @@ form.d-flex {
     }
   }
 } 
+
+#updateCourseModal .btn-primary {
+  background-color: #0d6efd;
+  //border-color: $text-secondary-color;
+  width: 100%;
+  font-weight: bold;
+}
+
+#updateCourseModal .btn-primary:hover {
+  background-color: darken(#0d6efd, 10%);
+}
+
+.logo-footer {
+  height: 60px;
+  opacity: 0.2;
+}
+
+.social-link {
+  color: rgba(0, 0, 0, 0.5);
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: #4e2096; /* Cor de destaque */
+}
+
+.contact-link {
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
