@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <div id="alert-placeholder"></div>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg">
@@ -90,6 +89,8 @@
     <div class="modal fade" id="createCourseModal" tabindex="-1" aria-labelledby="createCourseModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+            <div id="alert-placeholder-create"></div>
+
                 <div class="modal-header">
                     <h5 class="modal-title" id="createCourseModalLabel">Criar Novo Curso</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
@@ -127,6 +128,8 @@
     <div class="modal fade" id="updateCourseModal" tabindex="-1" aria-labelledby="updateCourseModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
+                <div id="alert-placeholder-update"></div>
+                
                 <div class="modal-header">
                     <h5 class="modal-title" id="updateCourseModalLabel">Atualizar Curso</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>

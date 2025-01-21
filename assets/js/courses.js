@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         coursesContainer: document.getElementById('courses-container'),
     };
 
-    const fetchCourses = async () => {
+    window.fetchCourses = async () => {
         try {
             const response = await fetch(apiUrl + "coursesGetRequest");
             const courses = await response.json();
@@ -146,16 +146,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const showAlert = (message) => {
-        const alertPlaceholder = document.getElementById('alert-placeholder');
+    const showAlert = (message, type = 'warning') => {
+        const alertPlaceholderUpdate = document.getElementById('alert-placeholder-update');
+
         const alertElement = document.createElement('div');
-        alertElement.className = 'alert alert-warning alert-dismissible fade show';
+        alertElement.className = `alert alert-${type} alert-dismissible fade show`;
         alertElement.role = 'alert';
         alertElement.innerHTML = `
         ${message}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     `;
-        alertPlaceholder.appendChild(alertElement);
+        alertPlaceholderUpdate.appendChild(alertElement);
     };
 
     const validateForm = (title, description, banner, image) => {
@@ -199,12 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: "POST",
                 body: formData,
             });
-
             const result = await response.json();
-            console.log(result);
-
             if (result.status === "success") {
-                alert("Curso atualizado com sucesso!");
+                showAlert("Curso atualizado com sucesso!", "success");
                 fetchCourses();
                 const bootstrapModal = bootstrap.Modal.getInstance(elements.updateCourseModal);
                 bootstrapModal.hide();
