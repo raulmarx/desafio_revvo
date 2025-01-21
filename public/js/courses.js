@@ -4,7 +4,7 @@ let apiUrl="http://localhost/desafio_revvo/src/CourseController.php?action=";doc
                 <div class="card-body position-relative">
                     <h5 class="card-title">${e.title}</h5>
                     <p class="card-text">${e.description}</p>
-                    <a href="${e.link}" class="btn btn-primary">Ver mais</a>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
                     <div class="dropdown position-absolute top-0 end-0 m-2">
                         <button class="btn dots btn-sm" type="button" id="dropdownMenuButton-${e.id}" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-three-dots"></i>

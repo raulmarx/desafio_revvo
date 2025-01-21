@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="carousel-caption">
                         <h5>${course.title}</h5>
                         <p>${course.description}</p>
-                        <a href="${course.link}" class="btn btn-outline-light">Ver mais</a>
+                        <a href="#" class="btn btn-outline-light">Ver mais</a>
                     </div>
                     `;
 

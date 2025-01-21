@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="card-body position-relative">
                     <h5 class="card-title">${course.title}</h5>
                     <p class="card-text">${course.description}</p>
-                    <a href="${course.link}" class="btn btn-primary">Ver mais</a>
+                    <a href="#" class="btn btn-primary">Ver mais</a>
                     <div class="dropdown position-absolute top-0 end-0 m-2">
                         <button class="btn dots btn-sm" type="button" id="dropdownMenuButton-${course.id}" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-three-dots"></i>
