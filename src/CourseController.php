@@ -35,18 +35,37 @@ function coursesGetRequest($course)
     }
 }
 
+function coursesGetByIdRequest($course)
+{
+    try {
+        $id = $_GET['id'] ?? null;
+
+        if (!$id) {
+            throw new Exception('ID is required');
+        }
+
+        $course = $course->getCourseById($id);
+        sendSuccessResponse(['data' => $course]);
+    } catch (Exception $e) {
+        sendErrorResponse($e->getMessage());
+    }
+}
+
 function coursesPostRequest($course)
 {
     try {
+        
         $title = $_POST['title'] ?? null;
         $description = $_POST['description'] ?? null;
+        $status = $_POST['status'] ?? null;
+        $bannerPath = isset($_FILES['banner']) ? $course->uploadImage($_FILES['banner']) : null;
         $imagePath = isset($_FILES['image']) ? $course->uploadImage($_FILES['image']) : null;
 
         if (!$title || !$description) {
             throw new Exception('Title and description are required');
         }
 
-        $course->addCourse($title, $description, $imagePath);
+        $course->addCourse($title, $description, $bannerPath, $imagePath, $status);
         sendSuccessResponse(['message' => 'Course added successfully']);
     } catch (Exception $e) {
         sendErrorResponse($e->getMessage());
@@ -59,10 +78,12 @@ function coursesUpdateRequest($course)
         $id = $_POST['id'] ?? null;
         $title = $_POST['title'] ?? null;
         $description = $_POST['description'] ?? null;
+        $status = $_POST['status'] ?? null;
+        $bannerPath = isset($_FILES['banner']) ? $course->uploadImage($_FILES['banner']) : null;
         $imagePath = isset($_FILES['image']) ? $course->uploadImage($_FILES['image']) : null;
 
 
-        $course->updateCourse($id, $title, $description, $imagePath);
+        $course->updateCourse($id, $title, $description, $bannerPath, $imagePath, $status);
         sendSuccessResponse(['message' => 'Course updated successfully']);
     } catch (Exception $e) {
         sendErrorResponse($e->getMessage());

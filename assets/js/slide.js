@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (index === 0) carouselItem.classList.add('active'); 
 
                 carouselItem.innerHTML = `
-                    <img src="../src/${course.image}" alt="${course.title}">
+                    <img src="../src/${course.banner}" alt="${course.title}">
                     <div class="carousel-caption">
                         <h5>${course.title}</h5>
                         <p>${course.description}</p>

@@ -13,26 +13,41 @@ class Course
 
     public function getCourses()
     {
-        $query = "SELECT id, title, description, image FROM courses";
+        $query = "SELECT id, title, description, banner, image, status FROM courses";
         $result = $this->conn->query($query);
 
         return $result->fetch_all(MYSQLI_ASSOC) ?? [];
     }
 
-    public function addCourse($title, $description, $imagePath)
+    public function getCourseById($id)
     {
-        $stmt = $this->conn->prepare("INSERT INTO courses (title, description, image) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $title, $description, $imagePath);
+        $stmt = $this->conn->prepare("SELECT id, title, description, banner, image, status FROM courses WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $course = $result->fetch_assoc();
+
+        if (!$course) {
+            throw new Exception("Curso não encontrado.");
+        }
+
+        return $course;
+    }
+
+    public function addCourse($title, $description, $bannerPath, $imagePath, $status)
+    {
+        $stmt = $this->conn->prepare("INSERT INTO courses (title, description, banner, image, status) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssss", $title, $description, $bannerPath, $imagePath, $status);
         
         if (!$stmt->execute()) {
             throw new Exception("Erro ao inserir curso: " . $stmt->error);
         }
     }
 
-    public function updateCourse($id, $title, $description, $imagePath)
+    public function updateCourse($id, $title, $description, $bannerPath, $imagePath, $status)
     {
-        $stmt = $this->conn->prepare("UPDATE courses SET title = ?, description = ?, image = ? WHERE id = ?");
-        $stmt->bind_param("sssi", $title, $description, $imagePath, $id);
+        $stmt = $this->conn->prepare("UPDATE courses SET title = ?, description = ?, banner = ?, image = ?, status = ? WHERE id = ?");
+        $stmt->bind_param("sssssi", $title, $description, $bannerPath, $imagePath, $status, $id);
         
         if (!$stmt->execute()) {
             throw new Exception("Erro ao atualizar curso: " . $stmt->error);
@@ -80,9 +95,9 @@ class Course
             throw new Exception("O arquivo de imagem é muito grande. O limite é 5MB.");
         }
 
-        $allowedFormats = ["jpg", "jpeg", "png", "gif"];
+        $allowedFormats = ["jpg", "jpeg", "png"];
         if (!in_array($imageFileType, $allowedFormats)) {
-            throw new Exception("Apenas imagens JPG, JPEG, PNG e GIF são permitidas.");
+            throw new Exception("Apenas imagens JPG, JPEG e PNG são permitidas.");
         }
     }
 }
